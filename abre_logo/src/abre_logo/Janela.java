@@ -3,6 +3,7 @@ package abre_logo;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -21,6 +22,7 @@ public class Janela extends Canvas implements Runnable, KeyListener, MouseListen
 	public Janela janela;
 	private Thread thread;
 	public boolean isRunning = true;
+	public boolean isPressed = false;
 	
 	private BufferedImage image;
 	
@@ -35,7 +37,7 @@ public class Janela extends Canvas implements Runnable, KeyListener, MouseListen
 		image = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_RGB);
 	}
 	public void initFrame() {
-		frame = new JFrame("Hello Gragas KDA <3 rsrs");
+		frame = new JFrame("oi_casada_rsrs");
 		frame.add(this);
 		frame.setResizable(false);
 		frame.pack();
@@ -81,7 +83,12 @@ public class Janela extends Canvas implements Runnable, KeyListener, MouseListen
 		g = bs.getDrawGraphics();
 		g.drawImage(image, 0, 0,WIDTH,HEIGHT,null);
 		
+		g.setColor(Color.white);
+		g.setFont(new Font("Arial", Font.BOLD, 30));
+		g.drawString("Bora se pega? rsrs <3", 100, 110);
+		
 		Yesbottom.render(g);
+		NoBottom.render(g);
 		
 		bs.show();
 	}
@@ -123,6 +130,9 @@ public class Janela extends Canvas implements Runnable, KeyListener, MouseListen
 		
 	}
 	public void mouseClicked(MouseEvent e) {
+		if(e.getButton() == MouseEvent.BUTTON1) {
+			YesMechanics.isPressed = true;
+		}
 		
 	}
 	public void mousePressed(MouseEvent e) {
