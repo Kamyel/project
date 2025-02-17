@@ -1,6 +1,7 @@
 package abre_logo;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 public class Yesbottom {
@@ -53,6 +54,7 @@ public class Yesbottom {
 	    	g.drawRect(151, 251, 147, 57);
 	    	g.setColor(new Color(255,173,187));
 	    	g.drawRect(148, 248, 153, 63);
+
 			
 		    }else if(isPressed = true) {
 		    	
@@ -63,7 +65,13 @@ public class Yesbottom {
 				g.drawRect(149, 249, 151, 61);
 				g.setColor(new Color(255,173,187));
 				g.drawRect(148, 248, 153, 63);
-		    	
+				g.setColor(Color.black);
+		    	g.setFont(font("arial"));
+		    	g.drawString("Yes", 210, 285);
 		}
   }
+	private static Font font(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
