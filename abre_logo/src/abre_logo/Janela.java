@@ -18,11 +18,16 @@ import javax.swing.JFrame;
 public class Janela extends Canvas implements Runnable, KeyListener, MouseListener, MouseMotionListener{
 	
 	public static JFrame frame;
-	public int WIDTH = 720, HEIGHT = 480;
+	public static int WIDTH = 720, HEIGHT = 480;
 	public Janela janela;
 	private Thread thread;
 	public boolean isRunning = true;
-	public boolean isPressed = false;
+	public static String yesPressed = "false";
+	public static String noPressed = "false";
+	public Yesbottom yesbottom;
+	public NoBottom nobottom;
+	
+	public int mX, mY;
 	
 	private BufferedImage image;
 	
@@ -37,7 +42,7 @@ public class Janela extends Canvas implements Runnable, KeyListener, MouseListen
 		image = new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_RGB);
 	}
 	public void initFrame() {
-		frame = new JFrame("oi_casada_rsrs");
+		frame = new JFrame("let's have a datting simulator irl");
 		frame.add(this);
 		frame.setResizable(false);
 		frame.pack();
@@ -45,13 +50,11 @@ public class Janela extends Canvas implements Runnable, KeyListener, MouseListen
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
-	
 	public synchronized void start() {
 		thread = new Thread(this);
 		isRunning = true;
 		thread.start();
 	}
-	
 	public synchronized void stop() {
 		isRunning = false;
 		try {
@@ -85,7 +88,7 @@ public class Janela extends Canvas implements Runnable, KeyListener, MouseListen
 		
 		g.setColor(Color.white);
 		g.setFont(new Font("Arial", Font.BOLD, 30));
-		g.drawString("Bora se pega? rsrs <3", 100, 110);
+		g.drawString("Wanna go on a date with me?", (WIDTH/5) +3, HEIGHT/4);
 		
 		Yesbottom.render(g);
 		NoBottom.render(g);
@@ -130,16 +133,21 @@ public class Janela extends Canvas implements Runnable, KeyListener, MouseListen
 		
 	}
 	public void mouseClicked(MouseEvent e) {
-		if(e.getButton() == MouseEvent.BUTTON1) {
-			YesMechanics.isPressed = true;
-		}
 		
 	}
 	public void mousePressed(MouseEvent e) {
-		
+		if(e.getButton() == MouseEvent.BUTTON1) {
+			yesPressed = "true";
+			noPressed = "true";
+			mX = getX();
+			mY = getY();
+		}
 	}
 	public void mouseReleased(MouseEvent e) {
-		
+		if(e.getButton() == MouseEvent.BUTTON1) {
+			noPressed = "false";
+			yesPressed = "false";
+		}
 	}
 	public void mouseEntered(MouseEvent e) {
 		

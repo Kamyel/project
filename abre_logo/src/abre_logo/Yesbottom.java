@@ -6,21 +6,28 @@ import java.awt.Graphics;
 
 public class Yesbottom {
 	
-	public static int yesButtomX = 150, yesButtomY = 250;
+	public static int yesButtomX = 144, yesButtomY = 250;
 	
+	public Yesbottom(int x, int y, int width,int height) {
+		
+	}
+	
+	public void tick() {
+		
+	}
 	public static void render(Graphics g) {
 	
-	    	g.setColor(Color.cyan);
-	    	g.fillRect(yesButtomX, yesButtomY, 150, 60);
-	    	g.setColor(Color.white);
-	    	g.drawRect(yesButtomX, yesButtomY, 150, 60);
-	    	g.drawRect(yesButtomX - 1, yesButtomY -1, 151, 61);
-	    	g.setColor(new Color(135,206,250));
-	    	g.drawRect(yesButtomX+1, yesButtomY+1, 147, 57);
-	    	g.setColor(new Color(255,173,187));
-	    	g.drawRect(yesButtomX-2, yesButtomY-2, 153, 63);
-	    	g.setColor(Color.white);
-	    	g.setFont(new Font("arial", Font.BOLD, 20));
-	    	g.drawString("Sim rsrs",yesButtomX +30,yesButtomY+37);
+    	g.setColor(Color.white);
+    	g.fillRect(yesButtomX-2, yesButtomY-2, 154, 64);
+	    g.setColor(Color.cyan);
+	    g.fillRect(yesButtomX, yesButtomY, 150, 60);
+	    g.setColor(Color.white);
+	    g.setFont(new Font("arial", Font.BOLD, 20));
+	    g.drawString("Yes <3", yesButtomX + ((150/2) - 30), yesButtomY + 35);
+	    
+	    if(Janela.yesPressed == "true") {
+	    	g.setColor(new Color(0,0,0,20));
+	    	g.fillRect(yesButtomX-2,yesButtomY-2,154,64);
+	    }
   }
 }
